@@ -8,7 +8,7 @@ winsize = (400, 400)
 
 #screen var
 screen = pygame.display.set_mode(winsize)
-gridImg = pygame.image.load("D:\\Documents\\Code\GitProjects\\2048\\assets\\grid.png").convert()
+gridImg = pygame.image.load("assets\\grid.png").convert()
 
 #window name
 pygame.display.set_caption("2048")
