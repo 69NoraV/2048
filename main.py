@@ -16,10 +16,10 @@ pygame.display.set_caption("2048")
 score = 0
 
 #game grid in a 2d array
-grid = [[0,0,0,1],
-        [0,0,1,0],
-        [0,1,0,0],
-        [0,0,0,1]]
+grid = [[0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]]
 
 #define the first position
 def randPos():
