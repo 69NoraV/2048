@@ -4,10 +4,11 @@ import pygame, random, numpy
 pygame.init()
 
 #set winsize
-winsize = (1024, 576)
+winsize = (400, 400)
 
-#standard var
+#screen var
 screen = pygame.display.set_mode(winsize)
+gridImg = pygame.image.load("D:\\Documents\\Code\GitProjects\\2048\\assets\\grid.png").convert()
 
 #window name
 pygame.display.set_caption("2048")
@@ -30,7 +31,7 @@ def UpdateScore():
     global score
     score += 1
 
-#update value of grid (WIP)
+#update value of grid 
 def UpdateValueGrid():
     for i in range(100):
         temp = RandPos()
@@ -54,9 +55,9 @@ def getInput():
 def moveNumbers():
     pass
 
-#show grid (WIP)
+#show grid 
 def ShowGrid():
-    pass
+    screen.blit(gridImg, (0,0))
 
 #debug function
 def Debug():
@@ -65,6 +66,8 @@ def Debug():
 #main loop
 main = True
 while main:
+    if score == 0:
+        ShowGrid()
     #get every event of the player
     for event in pygame.event.get():
         #if the event is quit then quit
@@ -75,4 +78,5 @@ while main:
             UpdateValueGrid()
             UpdateScore()
     Debug()
+    pygame.display.flip()
 pygame.QUIT
