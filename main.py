@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, numpy
 
 #initialize pygame
 pygame.init()
@@ -16,37 +16,50 @@ pygame.display.set_caption("2048")
 score = 0
 
 #game grid in a 2d array
-grid = [[0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0]]
+grid = numpy.array([[0,0,0,0],
+                    [0,0,0,0],
+                    [0,0,0,0],
+                    [0,0,0,0]])
 
 #define the first position
-def randPos():
-    posX = random.randint(0,3)
-    posY = random.randint(0,3)
-    return {posX, posY}
+def RandPos():
+    return numpy.array([random.randint(0,3), random.randint(0,3)])
 
 #update score every move
-def updateScore():
+def UpdateScore():
+    global score
     score += 1
 
 #update value of grid (WIP)
-def updateValueGrid():
-    while 1:
-        temp = randPos()
-        if grid[temp] == 0:
-            grid[temp] = 1
+def UpdateValueGrid():
+    for i in range(100):
+        temp = RandPos()
+        if grid[temp[0], temp[1]] == 0:
+            grid[temp[0], temp[1]] = 2
             break
 
+#get input player
+def getInput():
+    if pygame.key.get_pressed()[pygame.K_UP]:
+        return 1
+    if pygame.key.get_pressed()[pygame.K_DOWN]:
+        return 2
+    if pygame.key.get_pressed()[pygame.K_RIGHT]:
+        return 3
+    if pygame.key.get_pressed()[pygame.K_LEFT]:
+        return 4
+    
+    return 0
 
+def moveNumbers():
+    pass
 
 #show grid (WIP)
-def showGrid():
+def ShowGrid():
     pass
 
 #debug function
-def debug():
+def Debug():
     pass
 
 #main loop
@@ -57,6 +70,9 @@ while main:
         #if the event is quit then quit
         if event.type == pygame.QUIT:
             main = False
-    
-    debug()
+        getInput()
+        if getInput() != 0:
+            UpdateValueGrid()
+            UpdateScore()
+    Debug()
 pygame.QUIT
