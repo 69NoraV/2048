@@ -29,7 +29,7 @@ grid = numpy.array([[0,0,0,0],
 def RandPos():
     return numpy.array([random.randint(0,3), random.randint(0,3)])
 
-#update score every move
+#update moves every move
 def UpdateMoves():
     global moves
     moves += 1
@@ -39,7 +39,7 @@ def ShowMoves(x, y):
     movesTEXT = font.render("Moves: " + str(moves), 1, (63.2,15.1,0))
     screen.blit(movesTEXT, (x, y))
 
-#print numbers on gui (wip)
+#print numbers on gui
 def printNumberGUI(x,y):
     number = numbersFont.render(str(2), 1, (63.2,15.1,0))
     screen.blit(number, (x, y))
