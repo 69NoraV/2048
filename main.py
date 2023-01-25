@@ -66,9 +66,27 @@ def getInput():
     
     return 0
 
-#move numbers
+#move numbers (WIP)
 def moveNumberCode():
-    pass
+    temp = getInput() 
+    temp1 = 0
+    z = 1
+    match temp:
+        case 1:
+            for x in range(4):
+                for y in range(4):
+                    if grid[[x],[y]] != 0:
+                        if y != 0:
+                            while z < y:
+                                print("1")
+                                if grid[[x],[y - z]] == 0:
+                                    print("2")
+                                    grid[[x],[y - z + 1]] = grid[[x],[y]]
+                                    grid[[x],[y]] = 0
+                                    break
+                                z += 1
+                                
+
 
 #move numbers on GUI 
 def moveNumbersGUI():
@@ -80,7 +98,6 @@ def moveNumbersGUI():
 #show grid 
 def ShowGUI(x, y):
     screen.blit(gridGUI, (x, y))
-
 
 #screen update every frame
 def updateScreen():
@@ -106,8 +123,10 @@ while main:
         if event.type == pygame.QUIT:
             main = False
         if getInput() != 0:
+            moveNumberCode()
             UpdateValueGrid()
             UpdateMoves()
+            
     Debug()
     updateScreen()
 
